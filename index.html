@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MLBB World — Главная</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: linear-gradient(180deg,#0f1724 0%, #071025 60%);
+      --accent: #7c5cff;
+      --accent-2: #00d4ff;
+      --glass: rgba(255,255,255,0.04);
+      --muted: rgba(255,255,255,0.65);
+      --card: rgba(255,255,255,0.03);
+      --radius: 14px;
+      font-family: 'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg-1);color:#e6eef8}
+    a{color:inherit;text-decoration:none}
+
+    .container{max-width:1150px;margin:28px auto;padding:24px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo-badge{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#041026;box-shadow:0 6px 18px rgba(124,92,255,0.18)}
+    .brand{line-height:1}
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{padding:8px 12px;border-radius:10px;font-weight:600;color:rgba(230,238,248,0.9)}
+    nav a.cta{background:linear-gradient(90deg,rgba(124,92,255,0.18),rgba(0,212,255,0.08));backdrop-filter:blur(6px)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:22px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:18px;box-shadow:0 6px 30px rgba(2,6,23,0.7)}
+    .hero h2{margin:0 0 10px;font-size:26px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .searchbar{display:flex;gap:8px;align-items:center}
+    .searchbar input{flex:1;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .btn{padding:10px 14px;border-radius:12px;border:0;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#041026}
+
+    /* Cards row */
+    .cards-row{display:flex;gap:14px;margin-top:16px;flex-wrap:wrap}
+    .small-card{flex:1;min-width:160px;padding:12px;border-radius:12px;background:var(--card);backdrop-filter: blur(6px)}
+    .small-card h3{margin:0;font-size:14px}
+    .small-card p{margin:6px 0 0;font-size:12px;color:var(--muted)}
+
+    /* Right column */
+    .featured{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+    .featured h4{margin:0 0 8px}
+    .featured .hero-img{height:180px;border-radius:12px;background:linear-gradient(135deg,#2b2bff,#ff5caf);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:36px;color:#fff}
+
+    /* Sections */
+    section{margin-top:24px}
+    .section-head{display:flex;align-items:center;justify-content:space-between}
+    .section-head h3{margin:0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+
+    /* Hero card */
+    .hero-card-item{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;gap:12px;align-items:center}
+    .avatar{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,#6ee7b7,#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:#041026}
+    .hmeta h4{margin:0;font-size:16px}
+    .hmeta p{margin:6px 0 0;font-size:13px;color:var(--muted)}
+    .tags{margin-top:8px;display:flex;gap:8px}
+    .tag{padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:12px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:600px){
+      .container{padding:16px}
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+      .logo-badge{width:48px;height:48px}
+    }
+
+    /* Footer */
+    footer{margin-top:34px;padding:20px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);display:flex;justify-content:space-between;align-items:center}
+    footer p{margin:0;color:var(--muted)}
+
+    /* Small helpers */
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-badge">ML</div>
+        <div class="brand">
+          <h1>MLBB World</h1>
+          <p>Гайды, сборки и новости Mobile Legends</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#">Главная</a>
+        <a href="#heroes">Герои</a>
+        <a href="#builds">Сборки</a>
+        <a href="#guides">Гайды</a>
+        <a href="#news">Новости</a>
+        <a class="cta" href="#subscribe">Подписаться</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-card">
+        <h2>Добро пожаловать в MLBB World</h2>
+        <p>Лучшие сборки, тактики и свежие новости Mobile Legends — всё в одном месте. Начни с поиска героя или посмотри популярные сборки.</p>
+
+        <div class="searchbar">
+          <input id="search" placeholder="Поиск героя, сборки или гайда..." />
+          <button class="btn" id="searchBtn">Найти</button>
+        </div>
+
+        <div class="cards-row">
+          <div class="small-card">
+            <h3>Популярные герои</h3>
+            <p class="muted">Смотреть топ выбранных</p>
+          </div>
+          <div class="small-card">
+            <h3>Последние патчи</h3>
+            <p class="muted">Изменения баланса и предметов</p>
+          </div>
+          <div class="small-card">
+            <h3>Лучшие сборки</h3>
+            <p class="muted">Сборки от топ игроков</p>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+          <button class="btn">Создать сборку</button>
+          <button class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)">Смотреть видео</button>
+        </div>
+      </div>
+
+      <aside class="featured">
+        <h4>Герой недели</h4>
+        <div class="hero-img">Alucard</div>
+        <p class="muted" style="margin-top:10px">Популярный выбор для ранга Mythic. Больше урона и мобильности — узнай лучшие билды.</p>
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <div class="muted center" style="flex:1;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02)">Рейтинг: <strong style="margin-left:8px">4.8</strong></div>
+          <div class="muted center" style="padding:10px;border-radius:10px;background:rgba(255,255,255,0.02)">Роль: Файтер</div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- HEROES -->
+    <section id="heroes">
+      <div class="section-head">
+        <h3>Герои</h3>
+        <div class="muted">Фильтр: <button class="btn" style="padding:6px 10px">Танк</button> <button class="btn" style="padding:6px 10px">Маг</button> <button class="btn" style="padding:6px 10px">Стрелок</button></div>
+      </div>
+
+      <div class="grid" id="heroesGrid">
+        <!-- Hero item -->
+        <div class="hero-card-item">
+          <div class="avatar">A</div>
+          <div class="hmeta">
+            <h4>Alucard</h4>
+            <p class="muted">Роль: Файтер • Лёгкий в освоении</p>
+            <div class="tags"><div class="tag">Fighter</div><div class="tag">Jungle</div></div>
+          </div>
+        </div>
+
+        <div class="hero-card-item">
+          <div class="avatar">M</div>
+          <div class="hmeta">
+            <h4>Miya</h4>
+            <p class="muted">Роль: Стрелок • Отличен в лейне</p>
+            <div class="tags"><div class="tag">Marksman</div><div class="tag">Carry</div></div>
+          </div>
+        </div>
+
+        <div class="hero-card-item">
+          <div class="avatar">G</div>
+          <div class="hmeta">
+            <h4>Gusion</h4>
+            <p class="muted">Роль: Маг/Ассассин • Высокая сложность</p>
+            <div class="tags"><div class="tag">Assassin</div><div class="tag">Burst</div></div>
+          </div>
+        </div>
+
+        <div class="hero-card-item">
+          <div class="avatar">E</div>
+          <div class="hmeta">
+            <h4>Esmeralda</h4>
+            <p class="muted">Роль: Танки• Универсал</p>
+            <div class="tags"><div class="tag">Tank</div><div class="tag">Mage</div></div>
+          </div>
+        </div>
+
+        <div class="hero-card-item">
+          <div class="avatar">L</div>
+          <div class="hmeta">
+            <h4>Lancelot</h4>
+            <p class="muted">Роль: Ассассин • Идеален для ганков</p>
+            <div class="tags"><div class="tag">Assassin</div><div class="tag">Roamer</div></div>
+          </div>
+        </div>
+
+        <div class="hero-card-item">
+          <div class="avatar">F</div>
+          <div class="hmeta">
+            <h4>Franco</h4>
+            <p class="muted">Роль: Танк • Роумер и инициатор</p>
+            <div class="tags"><div class="tag">Tank</div><div class="tag">Roam</div></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BUILDS -->
+    <section id="builds">
+      <div class="section-head"><h3>Популярные сборки</h3><div class="muted">Топ-рейтинг сборок от сообщества</div></div>
+      <div class="grid">
+        <div class="hero-card-item"><div class="avatar">B</div><div class="hmeta"><h4>Alucard — Burst Build</h4><p class="muted">Скорость атаки и вампиризм</p></div></div>
+        <div class="hero-card-item"><div class="avatar">C</div><div class="hmeta"><h4>Miya — Carry Build</h4><p class="muted">Максимальный урон поздней игры</p></div></div>
+        <div class="hero-card-item"><div class="avatar">D</div><div class="hmeta"><h4>Gusion — Assassin Build</h4><p class="muted">Макс. магический урон</p></div></div>
+      </div>
+    </section>
+
+    <!-- GUIDES -->
+    <section id="guides">
+      <div class="section-head"><h3>Гайды</h3><div class="muted">Тактики по ролям и советы для ранга</div></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+        <div class="hero-card-item" style="flex:1;min-width:260px"><div style="flex:1"><h4>Как быстро подняться в ранге</h4><p class="muted">Пошаговый план: от золота до мифика</p></div></div>
+        <div class="hero-card-item" style="flex:1;min-width:260px"><div style="flex:1"><h4>Идеальные ротации для фарма</h4><p class="muted">Где лучше фармить и когда помогать линии</p></div></div>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news">
+      <div class="section-head"><h3>Новости</h3><div class="muted">Обновления, турниры, события</div></div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px">
+        <div class="hero-card-item"><div class="hmeta"><h4>Патч 1.6.2 — изменения баланса</h4><p class="muted">Коротко о самых важных изменениях.</p></div></div>
+        <div class="hero-card-item"><div class="hmeta"><h4>Турнир: MLBB Open</h4><p class="muted">Матчи и расписание — кто проходит дальше.</p></div></div>
+      </div>
+    </section>
+
+    <!-- SUBSCRIBE -->
+    <section id="subscribe">
+      <div style="margin-top:22px;padding:18px;border-radius:12px;background:linear-gradient(90deg, rgba(124,92,255,0.06), rgba(0,212,255,0.03));display:flex;gap:12px;align-items:center">
+        <div style="flex:1">
+          <h3 style="margin:0">Подпишись на MLBB World</h3>
+          <p class="muted" style="margin:6px 0 0">Получай новости и лучшие сборки прямо на почту</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <input placeholder="Email" style="padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit" />
+          <button class="btn">Подписаться</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© MLBB World — Все права защищены</p>
+      <p class="muted">Telegram • YouTube • Instagram</p>
+    </footer>
+  </div>
+
+  <script>
+    // Простой поиск по имени героя
+    const searchInput = document.getElementById('search');
+    const searchBtn = document.getElementById('searchBtn');
+    const grid = document.getElementById('heroesGrid');
+
+    searchBtn.addEventListener('click', ()=>{
+      const q = searchInput.value.trim().toLowerCase();
+      if(!q){
+        // show all
+        [...grid.children].forEach(c=>c.style.display='flex');
+        return;
+      }
+      [...grid.children].forEach(card=>{
+        const name = card.querySelector('.hmeta h4').textContent.toLowerCase();
+        card.style.display = name.includes(q) ? 'flex' : 'none';
+      })
+    });
+
+    // allow Enter key
+    searchInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') searchBtn.click(); });
+  </script>
+</body>
+</html>
